@@ -1,0 +1,7 @@
+{
+  "name": "Motion Studio AI Pro",
+  "description": "Professional high-performance motion graphics and video rendering studio with 4K/120FPS export engine, AI storyboard generator, and timeline sequencing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

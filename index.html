@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      // Safeguard window.fetch against read-only getter restrictions in iframe/preview environments
+      (function () {
+        try {
+          var origFetch = window.fetch;
+          var currentFetch = typeof origFetch === 'function' ? origFetch.bind(window) : origFetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function () {
+              return currentFetch;
+            },
+            set: function (newFetch) {
+              currentFetch = newFetch;
+            },
+            configurable: true,
+            enumerable: true,
+          });
+        } catch (e) {
+          try {
+            var proto = Object.getPrototypeOf(window);
+            if (proto) {
+              var origProtoFetch = proto.fetch || window.fetch;
+              var currentProtoFetch =
+                typeof origProtoFetch === 'function' ? origProtoFetch.bind(window) : origProtoFetch;
+              Object.defineProperty(proto, 'fetch', {
+                get: function () {
+                  return currentProtoFetch;
+                },
+                set: function (newFetch) {
+                  currentProtoFetch = newFetch;
+                },
+                configurable: true,
+                enumerable: true,
+              });
+            }
+          } catch (err) {}
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Motion Studio AI Pro</title>
+    <meta name="description" content="Professional high-performance motion graphics and video rendering studio with 4K/120FPS export engine, AI storyboard generator, and timeline sequencing." />
+    <meta property="og:title" content="Motion Studio AI Pro" />
+    <meta property="og:description" content="Professional high-performance motion graphics and video rendering studio with 4K/120FPS export engine, AI storyboard generator, and timeline sequencing." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
